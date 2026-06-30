@@ -15,7 +15,7 @@ export class HomePage {
   lng: number | null = null;
   dato: string | null = null;
 
-  foto: string | null | undefined = null;
+  foto: any = null;
 
   constructor(private native: Native) {}
 
