@@ -15,6 +15,8 @@ export class HomePage {
   lng: number | null = null;
   dato: string | null = null;
 
+  foto: string | null | undefined = null;
+
   constructor(private native: Native) {}
 
 
@@ -30,6 +32,10 @@ export class HomePage {
 
   async leer() {
     this.dato = await this.native.obtenerDato('clave');
+  }
+  
+  async capturarFoto() {
+    this.foto = await this.native.tomarFoto();
   }
 
 }

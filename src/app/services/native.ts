@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Geolocation } from '@capacitor/geolocation';
 import { Preferences } from '@capacitor/preferences';
+import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 
 @Injectable({
   providedIn: 'root',
@@ -17,6 +18,23 @@ export class Native {
   async obtenerDato(key: string) {
     const result = await Preferences.get({ key });
     return result.value;
+  }
+
+  async tomarFoto() {
+    try {
+      const image = await Camera.getPhoto({
+        quality: 90,
+        allowEditing: false,
+        resultType: CameraResultType.DataUrl,
+        source: CameraSource.Camera
+      });
+      console.log("tomarFoto(), image : ");
+      console.log(image);
+      return image.dataUrl;
+    } catch (error) {
+      console.error('Error cámara: ', error);
+      throw error;
+    }
   }
 
 }
