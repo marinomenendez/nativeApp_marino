@@ -1,0 +1,7 @@
+{
+  "name": "nativeApp_marino",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
